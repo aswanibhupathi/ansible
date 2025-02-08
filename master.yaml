@@ -1,7 +1,13 @@
 - name: ping the server
   hosts: web
   tasks: #list of tasks/modules/collections
-  - name: pinging the server
+  - name: install nginx
     ansible.builtin.package
       name: nginx
       state: latest
+  - name: start nginx
+    ansible.builtin.service
+      name: nginx
+      state: started
+      enabled: yes
+    
