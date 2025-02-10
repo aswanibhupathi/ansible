@@ -6,5 +6,9 @@
     Duration: "120hrs"
   tasks:
     - name: print info
+      vars: #declaring the variables at task level
+        Course: "Terraform"
+        Trainer: "Kumar Siva"
+        Duration: "10hrs"
       ansible.builtin.debug:
         msg: "Hi this is about learning {{Course}} from {{Trainer}} in duration {{Duration}}"
