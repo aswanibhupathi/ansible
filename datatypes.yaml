@@ -1,0 +1,22 @@
+- name: Playbook that uses all 5 datatypes
+  hosts: localhost
+  vars:
+    Course: "DevOps with AWs"
+    Tools:
+      - linux
+      - shell
+      - ansible
+    Experience:
+      Devops: 3
+      AWS: 2
+      Docker: 1
+    RealProject: true
+    Preferred_Cloud: "AWS"
+    Automation_Tool: "Terraform"
+    Configuration_Management: "Ansible"
+    CI_CD_Tool: "Jenkins"
+    Monitoring_Tool: "Prometheus"
+  tasks:
+    - name: print info
+      ansible.builtin.debug:
+        msg: "Hi I have been a DevOps Engineer since 2023. I have completed {{Course}}. I have known tools like {{Tools | join(', ') }}. I have Experience in Devops {{Experience.Devops}}, AWS {{Experience.AWS}} and Docker {{Experience.Docker}}. Have I worked on all this in real projects? {{ 'Yes' if RealProject else 'No' }}. and I prefer working with {{Preferred_Cloud}}. I have worked using {{Automation_Tool}}. I have been using {{Configuration_Management}} as CM tool. I have used {{CI_CD_Tool}} as CI-CD tool. I have knowledge about {{Monitoring_Tool}} as Monitoring tool."
