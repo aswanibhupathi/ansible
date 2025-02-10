@@ -1,7 +1,5 @@
 - name: variables
   hosts: localhost
-  vars_files: #declaring the variables play level
-    - vars.yaml
   tasks:
     - name: print info
       ansible.builtin.debug:
