@@ -7,6 +7,10 @@
       Course: Ansible
       Duration: 3months
       Trainer: Shiva
+    my_list:
+      - {'key': 'Course', 'value': 'Ansbile'}
+      - {'key': 'Trainer', 'value': 'Sivakumar'}
+      - {'key': 'Duration', 'value': '120hr'}
   tasks:
     - name: giving default values
       ansible.builtin.debug:
@@ -29,4 +33,9 @@
     - name: dict to item
       ansible.builtin.debug:
         msg: "my dict {{my_dict | dict2items }}"
-  
+    - name: item to dict
+      ansible.builtin.debug:
+        msg: "my dict {{my_list | items2dict }}"
+
+
+
