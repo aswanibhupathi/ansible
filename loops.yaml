@@ -1,19 +1,15 @@
 - name: different filters
   hosts: localhost
   vars:
-    numbers:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
+    users:
+      alice: admin
+      bob: developer
+      aswani: devops
+      sai: java
+
+
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "{{item}} is {{ 'even' if item%2 == 0 else 'odd' }}"
-      loop: "{{numbers}}"
+        msg: "Username is {{item.key}} User role is {{item.value}}."
+      loop: "{{users}}"
