@@ -10,6 +10,10 @@
 
 
   tasks:
+    - name: Ensure community.general collection is installed
+      ansible.builtin.collection:
+          name: community.general
+      
     - name: dictionary to items
       ansible.builtin.debug:
         msg: "Square number of {{ item }} is {{ item | multiply(item) }}" 
