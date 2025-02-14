@@ -14,4 +14,4 @@
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "Here is the items list {{users | dict2items}}"
+        msg: "Here is the items list {{users | dict2items | unique}}"
