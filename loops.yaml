@@ -12,6 +12,6 @@
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "Square number of {{ item }} is {{ item | map('multiply', 2)}}" 
+        msg: "Square number of {{ item }} is {{ item | multiply(2) }}" 
       loop: "{{ numbers }}"
       
