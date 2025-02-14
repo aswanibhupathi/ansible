@@ -15,5 +15,5 @@
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "{{item}}"
+        msg: "{{item}} is {{ 'even' if item%2 == 0 else 'odd' }}"
       loop: "{{numbers}}"
