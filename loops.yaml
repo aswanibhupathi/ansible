@@ -12,4 +12,4 @@
     - name: dictionary to items
       ansible.builtin.debug:
         msg: "Username is {{item.key}} User role is {{item.value}}."
-      loop: "{{users}}"
+      loop: "{{users | dict2items}}"
