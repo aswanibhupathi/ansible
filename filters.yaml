@@ -1,7 +1,7 @@
 - name: practicing filters
   hosts: localhost
   tasks:
-    name: giving default values
-    ansible.builtin.debug:
-      msg: "Hi this is {{Course | default('Ansbile')}}"
+    - name: giving default values
+      ansible.builtin.debug:
+        msg: "Hi this is {{Course | default('Ansbile')}}"
   
