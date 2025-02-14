@@ -6,11 +6,9 @@
     - name: giving default values
       ansible.builtin.debug:
         msg: "Hi this is {{Course | default('Ansbile')}}"
-
     - name: upper case filter
       ansbile.builtin.debug:
         msg: "Hi this is uppercase filter {{greeting | upper}}"
-
     - name: lower case filter
       ansible.builtin.debug:
         msg: "Hi this is lowercase filter {{greeting | lower}}"
