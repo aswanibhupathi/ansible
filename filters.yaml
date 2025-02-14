@@ -1,17 +1,19 @@
 - name: different filters
   hosts: localhost
   vars:
-    users:
-      alice:
-        age: 30
-        role: admin
-      bob:
-        age: 25
-        role: developer
-      charlie:
-        age: 35
-        role: tester
+    numbers:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "Here is the items list {{users | dict2items | unique}}"
+        msg: "{{item}}"
+      loop: "{{numbers}}"
