@@ -2,6 +2,7 @@
   hosts: localhost
   vars:
     greeting: "Hi Good Morning"
+    numbers: [1, 2, 3, 3, 4, 4, 5]
   tasks:
     - name: giving default values
       ansible.builtin.debug:
@@ -12,4 +13,13 @@
     - name: lower case filter
       ansible.builtin.debug:
         msg: "Hi this is lowercase filter {{greeting | lower}}"
+    - name: duplicate removal or unique finding
+      ansible.builtin.debug:
+        msg: "Hi printing unique values {{numbers | unique}}"
+    - name: max value
+      ansible.builtin.debug:
+        msg: "Hi the max value is {{numbers | max}}"
+    - name: max value
+      ansible.builtin.debug:
+        msg: "Hi the min value is {{numbers | min}}"
   
