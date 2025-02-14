@@ -3,6 +3,10 @@
   vars:
     greeting: "Hi Good Morning"
     numbers: [1, 2, 3, 3, 4, 4, 5]
+    my_dict: # this is dictionary
+      Course: Ansible
+      Duration: 3months
+      Trainer: Shiva
   tasks:
     - name: giving default values
       ansible.builtin.debug:
@@ -22,4 +26,7 @@
     - name: max value
       ansible.builtin.debug:
         msg: "Hi the min value is {{numbers | min}}"
+    - name: dict to item
+      ansible.builtin.debug:
+        msg: "my dict {{my_dict | dict2items }}"
   
