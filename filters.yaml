@@ -1,5 +1,5 @@
 - name: different filters
-  host: localhost
+  hosts: localhost
   vars:
     users:
       alice:
