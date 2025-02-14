@@ -36,6 +36,7 @@
     - name: item to dict
       ansible.builtin.debug:
         msg: "my dict {{my_list | items2dict }}"
+        
 
 
 
