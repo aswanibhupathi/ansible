@@ -1,42 +1,17 @@
-- name: practicing filters
-  hosts: localhost
+- name: different filters
+  host: localhost
   vars:
-    greeting: "Hi Good Morning"
-    numbers: [1, 2, 3, 3, 4, 4, 5]
-    my_dict: # this is dictionary
-      Course: Ansible
-      Duration: 3months
-      Trainer: Shiva
-    my_list:
-      - {'key': 'Course', 'value': 'Ansbile'}
-      - {'key': 'Trainer', 'value': 'Sivakumar'}
-      - {'key': 'Duration', 'value': '120hr'}
+    users:
+      alice:
+        age: 30
+        role: admin
+      bob:
+        age: 25
+        role: developer
+      charlie:
+        age: 35
+        role: tester
   tasks:
-    - name: giving default values
+    - name: dictionary to items
       ansible.builtin.debug:
-        msg: "Hi this is {{Course | default('Ansbile')}}"
-    - name: upper case filter
-      ansible.builtin.debug:
-        msg: "Hi this is uppercase filter {{greeting | upper}}"
-    - name: lower case filter
-      ansible.builtin.debug:
-        msg: "Hi this is lowercase filter {{greeting | lower}}"
-    - name: duplicate removal or unique finding
-      ansible.builtin.debug:
-        msg: "Hi printing unique values {{numbers | unique}}"
-    - name: max value
-      ansible.builtin.debug:
-        msg: "Hi the max value is {{numbers | max}}"
-    - name: max value
-      ansible.builtin.debug:
-        msg: "Hi the min value is {{numbers | min}}"
-    - name: dict to item
-      ansible.builtin.debug:
-        msg: "my dict {{my_dict | dict2items }}"
-    - name: item to dict
-      ansible.builtin.debug:
-        msg: "my dict {{my_list | items2dict }}"
-        
-
-
-
+        msg: "Here is the items list {{users | dict2items}}"
