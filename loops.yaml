@@ -1,15 +1,17 @@
 - name: different filters
   hosts: localhost
   vars:
-    users:
-      alice: admin
-      bob: developer
-      aswani: devops
-      sai: java
+    fruits:
+      - apple
+      - banana
+      - cherry
+      - date
+      - elderberry
 
 
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "Username is {{item.key}} User role is {{item.value}}."
-      loop: "{{users | dict2items}}"
+        msg: "{{ item }} has morethan 5 letters" 
+      loop: "{{fruits}}"
+      when: "{{item | length > 5}}"
