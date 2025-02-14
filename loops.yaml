@@ -1,17 +1,17 @@
 - name: different filters
   hosts: localhost
   vars:
-    fruits:
-      - apple
-      - banana
-      - cherry
-      - date
-      - elderberry
+    numbers:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
 
 
   tasks:
     - name: dictionary to items
       ansible.builtin.debug:
-        msg: "{{ item }} has morethan 5 letters" 
-      loop: "{{fruits}}"
-      when: "{{item | length > 5}}"
+        msg: "Square number of {{ item }} is {{ item | map('mulitply', 2)}}" 
+      loop: "{{numbers}}"
+      
