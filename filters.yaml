@@ -1,18 +1,7 @@
 - name: practicing filters
   hosts: localhost
-  become: yes
-  vars_prompt:
-    - name: NUMBER
-      prompt: Enter the number
-      private: no
   tasks:
-    - name: number is less 10
-      ansible.builtin.debug:
-        msg: "The {{NUMBER}} is less than 10."
-      when: NUMBER | int < 10
-      
-    - name: number is greater 10
-      ansible.builtin.debug:
-        msg: "The {{NUMBER}} is greater than 10."
-      when: NUMBER | int > 10
-    
+    name: giving default values
+    ansible.builtin.debug:
+      msg: "Hi this is {{Course | default('Ansbile')}}"
+  
