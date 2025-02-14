@@ -1,12 +1,19 @@
-- name: install packages
-  hosts: web
-  become: yes
+- name: different filters
+  hosts: localhost
+  vars:
+    numbers:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
   tasks:
-    - name: install packages
-      ansible.builtin.dnf:
-        name: "{{ item.name }}"
-        state: "{{ item.state }}"
-      loop:
-        - { name: 'mysql', state: 'latest'}
-        - { name: 'nginx', state: 'absent'}
-        - { name: 'postfix', state: 'absent'}
+    - name: dictionary to items
+      ansible.builtin.debug:
+        msg: "{{item}}"
+      loop: "{{numbers}}"
