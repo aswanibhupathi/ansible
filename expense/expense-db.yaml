@@ -24,7 +24,7 @@
           name: 
             - PyMySQL
             - crytography
-              executable: pip3.9
+          executable: pip3.9
 
     - name: checking db connection
       community.mysql.mysql_info:
