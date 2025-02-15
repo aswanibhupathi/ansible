@@ -2,7 +2,7 @@
   hosts: [db]
   become: yes
   vars:
-    login_host: [db]
+    login_host: "db"
   vars_prompt:
     - name: mysql_root_password
       prompt: Please enter mysql password
@@ -23,7 +23,7 @@
       ansible.builtin.pip:
           name: 
             - PyMySQL
-            - crytography
+            - cryptography
           executable: pip3.9
 
     - name: checking db connection
