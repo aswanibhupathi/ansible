@@ -1,0 +1,44 @@
+- name: connecting to db and installing mysql
+  hosts: db
+  become: yes
+  vars:
+    login_host: 172.31.91.14
+  vars_prompt:
+    - name: mysql_root_password
+      prompt: Please enter mysql password
+      private: no
+  tasks:
+    - name: Installing MYSQL SERVER
+      ansible.builtin.dnf:
+          name: mysql-server
+          state: latest
+
+    - name: Enabling and Starting mysql service
+      ansible.builtin.service:
+          name: mysqld
+          enabled: yes
+          state: started
+
+    - name: install python mysql dependencies
+      ansible.builtin.pip:
+          name: 
+            - PyMySQL
+            - crytography
+              executable: pip3.9
+
+    - name: checking db connection
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: "{{mysql_root_password}}"
+        login_host: "{{login_host}}"
+        filter: version
+      ignore_errors: yes
+      register: mysql_connection_output
+
+    - name: print output
+      ansible.builtin.debug:
+        msg: "Output: {{mysql_connection_output}}"
+    
+    - name: db password set
+      ansible.builtin.command:  "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+      when: mysql_connection_output.failed is true            
