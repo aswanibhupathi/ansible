@@ -1,8 +1,8 @@
 - name: connecting to db and installing mysql
-  hosts: db
+  hosts: [db]
   become: yes
   vars:
-    login_host: 172.31.91.14
+    login_host: 52.90.77.169
   vars_prompt:
     - name: mysql_root_password
       prompt: Please enter mysql password
